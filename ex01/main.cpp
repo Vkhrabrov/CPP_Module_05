@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:48:14 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/07/25 21:15:11 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/07/31 20:40:46 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,20 @@ int main(void){
         // std::cout << steve << std::endl;
     
     try {
-        Bureaucrat bob("Bob", 125);
-        Form List("Simple List", 100, 50);
-        List.isSigned();
-        List.beSigned(bob);
-        List.isSigned();
+        // Bureaucrat larry("Larry", 200);
+        // Form brochure("A simple brochure", 100, 50);
+        // brochure.isSigned();
+        // brochure.beSigned(larry, brochure);
+        // brochure.isSigned();
+
+        // std::cout << std::endl;
+
+        Bureaucrat bob("Bob", 121);
+        Form list("Simple List", 100, 50);
+        // bob.getGrade();
+        list.isSigned();
+        list.beSigned(bob, list);
+        list.isSigned();
         // Bureaucrat claudia("Claude", 151);
         // bob.downGrade(3);
         

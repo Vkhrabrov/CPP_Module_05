@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:45:47 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/07/25 21:34:54 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/07/31 19:19:36 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ public:
     std::string getName(void) const;
     void upGrade(int grade);
     void downGrade(int grade);
-    void signForm(const Bureaucrat& bureaucrat, const Form& form);
+    void signForm(Form& form);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);

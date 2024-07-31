@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 20:30:58 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/07/25 21:37:00 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/07/31 20:38:59 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ Form::Form() : _name("Empty Form"), _signed(0), _grade_to_sign(150), _grade_to_e
 Form::Form(const std::string name, const int grade_to_sign, const int grade_to_exec)
 {
     this->_name = name;
-    if (grade_to_sign > 150 || grade_to_exec > 150)
-        throw GradeTooLowException();
-    else if (grade_to_sign < 1 || grade_to_exec < 1)
-        throw GradeTooHighException();
+        if (grade_to_sign > 150 || grade_to_exec > 150)
+            throw GradeTooLowException();
+        else if (grade_to_sign < 1 || grade_to_exec < 1)
+            throw GradeTooHighException();
+
     this->_grade_to_sign = grade_to_sign;
     this->_grade_to_exec = grade_to_exec;
     std::cout << "Form " << this->_name << " has been created" << std::endl;
@@ -59,20 +60,23 @@ std::string Form::getName(void) const{
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-    return "Grade is too high.";
+    return "Bureucrat's grade is too high to sign this form.";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-    return "Grade is too low.";
+    return "Bureucrat's grade is too low to sign this form.";
 }
 
-void Form::beSigned(const Bureaucrat& bureaucrat){
-    if (bureaucrat.getGrade() <= this->_grade_to_sign){
-        this->_signed = 1;
-        signForm(bureaucrat, );
-    }
-    else
-       throw GradeTooLowException(); 
+void Form::beSigned(Bureaucrat& bureaucrat, Form& form){
+        if (bureaucrat.getGrade() <= form._grade_to_sign){
+            form._signed = 1;
+            bureaucrat.signForm(form);
+        }
+        else
+        {
+            bureaucrat.signForm(form);
+            throw GradeTooLowException();
+        }
 }
 
 void Form::isSigned(void){

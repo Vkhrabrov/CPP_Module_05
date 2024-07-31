@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 20:19:36 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/07/25 21:30:23 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/07/31 19:21:24 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ public:
     // void downGrade(int grade);
 
     void isSigned(void);
-    void beSigned(const Bureaucrat& bureaucrat);
+    void beSigned(Bureaucrat& bureaucrat, Form& form);
     int ifSigned(void) const;
 
 };
