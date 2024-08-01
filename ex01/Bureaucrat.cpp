@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:51:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/07/31 20:40:04 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:58:11 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ std::string Bureaucrat::getName(void) const{
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Chosen Grade for the new Bureaucrat is too high. Maximum grade is 1.";
+    return "Bureaucrat's grade is too high";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Chosen Grade for the new Bureaucrat is too low. Minimum grade is 150.";
+    return "Bureaucrat's grade is too low";
 }
 
 void Bureaucrat::upGrade(int const grade){
@@ -84,13 +84,7 @@ void Bureaucrat::downGrade(int const grade){
 }
 
 void Bureaucrat::signForm(Form& form){
-    if (form.ifSigned() == 1)
-        std::cout << this->getName() << " signed " << form.getName() << std::endl;
-    else
-    {
-        std::cout << this->getName() << " could not sign " << form.getName() << " because his grade is too low " << std::endl;
-        std::cout << "The grade required to sign this form is " << form.getGradeToSign() << " and the " << this->_name << "'s grade is " << this->getGrade() << std::endl;
-    }
+   form.beSigned(*this);
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {

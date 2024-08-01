@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 20:30:58 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/07/31 20:38:59 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:56:16 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,23 @@ std::string Form::getName(void) const{
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-    return "Bureucrat's grade is too high to sign this form.";
+    return "The chosen grade for the form is too high.";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-    return "Bureucrat's grade is too low to sign this form.";
+    return "The chosen grade for the form is too low.";
 }
 
-void Form::beSigned(Bureaucrat& bureaucrat, Form& form){
-        if (bureaucrat.getGrade() <= form._grade_to_sign){
-            form._signed = 1;
-            bureaucrat.signForm(form);
-        }
+void Form::beSigned(Bureaucrat& bureaucrat){
+    if (bureaucrat.getGrade() <= this->getGradeToSign())
+        this->_signed = 1;
+    if (this->_signed == 1)
+            std::cout << bureaucrat.getName() << " signed " << this->_name << std::endl;
         else
         {
-            bureaucrat.signForm(form);
-            throw GradeTooLowException();
+            std::cout << bureaucrat.getName() << " could not sign " << this->_name << " because his grade is too low " << std::endl;
+            std::cout << "The grade required to sign this form is " << this->_grade_to_sign << " and the " << bureaucrat.getName() << "'s grade is " << bureaucrat.getGrade() << std::endl;
+            throw Bureaucrat::GradeTooLowException();
         }
 }
 
