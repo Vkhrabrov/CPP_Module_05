@@ -10,13 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
+
 #include "AForm.hpp"
 
-class ShrubberyCreationAForm : public AForm{
+class ShrubberyCreationForm : public AForm{
     public:
-        ShrubberyCreationAForm();
-        ShrubberyCreationAForm(const std::string target);
-        ShrubberyCreationAForm(const ShrubberyCreationAForm& copy);
-        ShrubberyCreationAForm& operator=(const ShrubberyCreationAForm& src);
-        ~ShrubberyCreationAForm();
+        ShrubberyCreationForm();
+        ShrubberyCreationForm(const std::string target);
+        ShrubberyCreationForm(const ShrubberyCreationForm& copy);
+        ShrubberyCreationForm& operator=(const ShrubberyCreationForm& src);
+        virtual ~ShrubberyCreationForm();
+        void performAction() const;
 };
+
+#endif

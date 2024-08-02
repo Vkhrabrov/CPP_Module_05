@@ -6,22 +6,24 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:48:14 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/08/01 20:09:00 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/08/02 21:23:36 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main(void)
 {
     try {
-        Bureaucrat bob("Bob", 121);
-        AForm list("Simple List", 100, 50);
-        list.isSigned();
-        bob.signAForm(list);
-        list.isSigned();
+        Bureaucrat bob("Bob", 144);
+        ShrubberyCreationForm shrubs("Home");
+        shrubs.isSigned();
+        bob.signForm(shrubs);
+        bob.signForm(shrubs);
+        shrubs.isSigned();
+        bob.executeForm(shrubs);
     } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        // std::cerr << "Error: " << e.what() << std::endl;
     }
     return 0;
 }

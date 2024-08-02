@@ -38,7 +38,7 @@ AForm &AForm::operator = (const AForm& src){
     std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
 		this->_grade_to_sign = src.getGradeToSign();
-        this->_grade_to_sign = src.getGradeToExec();
+        this->_grade_to_exec = src.getGradeToExec();
 	
 	return *this;
 }
@@ -67,14 +67,39 @@ const char* AForm::GradeTooLowException::what() const throw() {
     return "The chosen grade for the AForm is too low.";
 }
 
+const char* AForm::TheDocumentIsNotSignedException::what() const throw() {
+    return "The document isn't signed so it can't be executed.";
+}
+
+const char* AForm::TheDocumentIsAlreadySignedException::what() const throw() {
+    return "The document has beed signed already.";
+}
+
 void AForm::beSigned(Bureaucrat& bureaucrat){
+
     if (bureaucrat.getGrade() <= this->getGradeToSign())
-        this->_signed = 1;
+    {   if (this->_signed != 1)
+            this->_signed = 1;
+        else{
+            std::cout << "The document is already signed, it can not be signed twice" << std::endl;
+            throw TheDocumentIsAlreadySignedException();
+        }
+    }
 }
 
 void AForm::execute(Bureaucrat const & executor) const{
-    if (executor.getGrade() <= this->getGradeToSign())
-        this->_executed = true;
+    if (this->ifSigned() == 1){
+        if (executor.getGrade() <= this->getGradeToExec())
+            this->performAction();
+        else{
+            std::cout << "The Document can't be executed, the bureaucrat's grade is too low." << std::endl;
+            throw GradeTooLowException();
+        }
+    }
+    else{
+        std::cout << "The Document can't be executed, it must be signed first." << std::endl;
+        throw TheDocumentIsNotSignedException();
+    }
 }
 
 void AForm::isSigned(void){
@@ -90,22 +115,6 @@ int AForm::ifSigned(void) const{
     else
         return 0;
 }
-
-// void AForm::upGrade(int const grade){
-//     if (_grade - grade < 1)
-//         throw GradeTooHighException();
-//     else if (_grade - grade > 150)
-//         throw GradeTooLowException();
-//     this->_grade -= grade;
-// }
-
-// void AForm::downGrade(int const grade){
-//     if (_grade + grade > 150)
-//         throw GradeTooLowException();
-//     else if (_grade + grade < 1)
-//         throw GradeTooHighException();
-//     this->_grade += grade;
-// }
 
 std::ostream& operator<<(std::ostream& os, const AForm& AForm) {
     os << AForm.getName() << ", AForm grade to sign is " << AForm.getGradeToSign() << " and its grade to execute is " << AForm.getGradeToExec();

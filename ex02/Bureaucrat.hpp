@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:45:47 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/08/01 20:19:25 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/08/02 20:30:14 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ public:
     std::string getName(void) const;
     void upGrade(int grade);
     void downGrade(int grade);
-    void signAForm(AForm& AForm);
+    void signForm(AForm& form);
     void executeForm(AForm const & form);
 };
 

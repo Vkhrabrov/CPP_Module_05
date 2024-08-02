@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:51:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/08/01 20:27:07 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/08/02 20:30:21 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,26 +83,26 @@ void Bureaucrat::downGrade(int const grade){
     this->_grade += grade;
 }
 
-void Bureaucrat::signAForm(AForm& AForm){
+void Bureaucrat::signForm(AForm& AForm){
    AForm.beSigned(*this);
       if (AForm.ifSigned() == 1)
-            std::cout << this->_name << " signed " << this->_name << std::endl;
+            std::cout << this->_name << " signed " << AForm.getName() << std::endl;
         else
         {
             std::cout << this->_name << " could not sign " << AForm.getName() << " because his grade is too low " << std::endl;
-            std::cout << "The grade required to sign this AForm is " << AForm.getGradeToSign() << " and the " << this->_name << "'s grade is " << this->_grade << std::endl;
+            std::cout << "The grade required to sign this Form is " << AForm.getGradeToSign() << " and the " << this->_name << "'s grade is " << this->_grade << std::endl;
             throw GradeTooLowException();
         }
 }
 
 void Bureaucrat::executeForm(AForm const & form){
     form.execute(*this);
-      if (form.ifExecuted() == 1)
-            std::cout << this->_name << " executed " << this->_name << std::endl;
+      if (this->_grade <= form.getGradeToExec())
+            std::cout << this->_name << " executed " << form.getName() << std::endl;
         else
         {
             std::cout << this->_name << " could not execute " << form.getName() << " because his grade is too low " << std::endl;
-            std::cout << "The grade required to execute this AForm is " << form.getGradeToExec() << " and the " << this->_name << "'s grade is " << this->_grade << std::endl;
+            std::cout << "The grade required to execute this Form is " << form.getGradeToExec() << " and the " << this->_name << "'s grade is " << this->_grade << std::endl;
             throw GradeTooLowException();
         }
 }

@@ -14,12 +14,14 @@
 #define AForm_HPP
 
 #include "Bureaucrat.hpp"
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 class AForm {
-private:
+protected:
     std::string _name;
     bool _signed;
-    bool _executed;
     int _grade_to_sign;
     int _grade_to_exec;
 
@@ -28,7 +30,7 @@ public:
     AForm(const std::string name, int grade_to_sign, int grade_to_exec);
     AForm(const AForm& copy);
     AForm& operator=(const AForm& src);
-    ~AForm();
+    virtual ~AForm();
 
     class GradeTooHighException : public std::exception {
     public:
@@ -36,6 +38,16 @@ public:
     };
 
     class GradeTooLowException : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
+
+    class TheDocumentIsNotSignedException : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
+
+    class TheDocumentIsAlreadySignedException : public std::exception {
     public:
         virtual const char* what() const throw();
     };
@@ -50,6 +62,7 @@ public:
     void beSigned(Bureaucrat& bureaucrat);
     int ifSigned(void) const;
     void execute(Bureaucrat const & executor) const;
+    virtual void performAction() const = 0;
 
 };
 
