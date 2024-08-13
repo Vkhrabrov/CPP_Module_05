@@ -10,3 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
+
+#include "ShrubberyCreationForm.hpp"
+
+class PresidentialPardonForm : public AForm{
+    public:
+        PresidentialPardonForm();
+        PresidentialPardonForm(const std::string target);
+        PresidentialPardonForm(const PresidentialPardonForm& copy);
+        PresidentialPardonForm& operator=(const PresidentialPardonForm& src);
+        virtual ~PresidentialPardonForm();
+        void performAction() const;
+};
+
+#endif

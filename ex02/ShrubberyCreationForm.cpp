@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(){
@@ -34,15 +32,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) 
     this->_name = copy._name; 
     std::cout << "Copy of the Shrubbery Creation Form has been created" << std::endl;
 }
-
-// AForm &AForm::operator = (const AForm& src){
-//     std::cout << "Copy assignment operator called" << std::endl;
-// 	if (this != &src)
-// 		this->_grade_to_sign = src.getGradeToSign();
-//         this->_grade_to_exec = src.getGradeToExec();
-	
-// 	return *this;
-// }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator = (const ShrubberyCreationForm& src){
     std::cout << "Copy assignment operator called" << std::endl;

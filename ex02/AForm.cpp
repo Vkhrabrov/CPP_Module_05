@@ -44,7 +44,7 @@ AForm &AForm::operator = (const AForm& src){
 }
 		
 AForm::~AForm(){
-    std::cout << "AForm " << this->_name << " has been destroyed" << std::endl;
+    std::cout << this->_name << " has been destroyed" << std::endl;
 }
 
 int AForm::getGradeToSign() const{
@@ -104,9 +104,9 @@ void AForm::execute(Bureaucrat const & executor) const{
 
 void AForm::isSigned(void){
     if (this->_signed == 1)
-        std::cout << "The AForm " << this->getName() << " is signed" << std::endl;
+        std::cout << this->getName() << " is signed" << std::endl;
     else
-        std::cout << "The AForm " << this->getName() << " is not signed" << std::endl;
+        std::cout << this->getName() << " is not signed" << std::endl;
 }
 
 int AForm::ifSigned(void) const{
