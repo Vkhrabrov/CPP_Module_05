@@ -93,7 +93,7 @@ void AForm::execute(Bureaucrat const & executor) const{
             this->performAction();
         else{
             std::cout << "The Document can't be executed, the bureaucrat's grade is too low." << std::endl;
-            throw GradeTooLowException();
+            throw Bureaucrat::GradeTooLowException();
         }
     }
     else{

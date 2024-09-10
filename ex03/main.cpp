@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:48:14 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/09/09 20:26:34 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/10 19:15:51 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void)
         AForm* ppf;
 
         rrf = someIntern.makeForm("Robotomy Request", "Bobby");
-        Bureaucrat bob("Bob", 4);
+        Bureaucrat bob("Bob", 72);
         // ShrubberyCreationForm shrubs("Home");
         // PresidentialPardonForm no_mercy("Mercy");
         // RobotomyRequestForm johnny("John Doe");
