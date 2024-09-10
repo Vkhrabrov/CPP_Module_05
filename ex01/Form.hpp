@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 20:19:36 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/08/01 19:29:06 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:09:15 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ public:
     int getGradeToSign(void) const;
     int getGradeToExec(void) const;
     std::string getName(void) const;
-    // void upGrade(int grade);
-    // void downGrade(int grade);
 
     void isSigned(void);
     void beSigned(Bureaucrat& bureaucrat);

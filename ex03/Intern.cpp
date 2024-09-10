@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 21:47:01 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/09/09 20:25:54 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:05:31 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ AForm* Intern::makeForm(const std::string form_name, const std::string target){
       return functionArray[i](target);
     }
   }
+  std::cout << "Intern couldn't create " << form_name << ". Check the spelling of your Form Request!" << std::endl;
+  std::cout << "Must be Shrubbery Creation/Presidential Pardon/Robotomy Request" << std::endl;
   throw std::runtime_error("Couldn't create " + form_name + " Form");
 }
