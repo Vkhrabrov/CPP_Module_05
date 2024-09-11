@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:45:47 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/07/31 19:19:36 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:35:45 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ class Form;
 
 class Bureaucrat {
 private:
-    std::string _name;
+    const std::string _name;
     int _grade;
 
 public:
     Bureaucrat();
-    Bureaucrat(std::string name);
-    Bureaucrat(std::string name, int grade);
+    Bureaucrat(const std::string name);
+    Bureaucrat(const std::string name, int grade);
     Bureaucrat(const Bureaucrat& copy);
     Bureaucrat& operator=(const Bureaucrat& src);
     

@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 20:30:58 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/08/01 19:56:16 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:01:53 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,24 @@ Form::Form() : _name("Empty Form"), _signed(0), _grade_to_sign(150), _grade_to_e
 	std::cout << "Default Form is created" << std::endl;
 }
 
-Form::Form(const std::string name, const int grade_to_sign, const int grade_to_exec)
+Form::Form(const std::string name, const int grade_to_sign, const int grade_to_exec) : _name(name), _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec)
 {
-    this->_name = name;
         if (grade_to_sign > 150 || grade_to_exec > 150)
             throw GradeTooLowException();
         else if (grade_to_sign < 1 || grade_to_exec < 1)
             throw GradeTooHighException();
-
-    this->_grade_to_sign = grade_to_sign;
-    this->_grade_to_exec = grade_to_exec;
     std::cout << "Form " << this->_name << " has been created" << std::endl;
 }
 
-Form::Form(const Form& copy){
-    *this = copy;
+Form::Form(const Form& copy): _name(copy._name), _signed(copy._signed),
+    _grade_to_sign(copy._grade_to_sign), _grade_to_exec(copy._grade_to_exec){
     std::cout << "Copy of the Form " << this->_name << " has been created" << std::endl;
 }
 		
 Form &Form::operator = (const Form& src){
     std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
-		this->_grade_to_sign = src.getGradeToSign();
-        this->_grade_to_sign = src.getGradeToExec();
-	
+		this->_signed = src._signed;
 	return *this;
 }
 		
@@ -93,22 +87,6 @@ int Form::ifSigned(void) const{
     else
         return 0;
 }
-
-// void Form::upGrade(int const grade){
-//     if (_grade - grade < 1)
-//         throw GradeTooHighException();
-//     else if (_grade - grade > 150)
-//         throw GradeTooLowException();
-//     this->_grade -= grade;
-// }
-
-// void Form::downGrade(int const grade){
-//     if (_grade + grade > 150)
-//         throw GradeTooLowException();
-//     else if (_grade + grade < 1)
-//         throw GradeTooHighException();
-//     this->_grade += grade;
-// }
 
 std::ostream& operator<<(std::ostream& os, const Form& Form) {
     os << Form.getName() << ", Form grade to sign is " << Form.getGradeToSign() << " and its grade to execute is " << Form.getGradeToExec();

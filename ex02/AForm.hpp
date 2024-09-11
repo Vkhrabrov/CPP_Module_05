@@ -20,10 +20,10 @@
 
 class AForm {
 protected:
-    std::string _name;
+    const std::string _name;
     bool _signed;
-    int _grade_to_sign;
-    int _grade_to_exec;
+    const int _grade_to_sign;
+    const int _grade_to_exec;
 
 public:
     AForm();
@@ -55,8 +55,6 @@ public:
     int getGradeToSign(void) const;
     int getGradeToExec(void) const;
     std::string getName(void) const;
-    // void upGrade(int grade);
-    // void downGrade(int grade);
 
     void isSigned(void);
     void beSigned(Bureaucrat& bureaucrat);

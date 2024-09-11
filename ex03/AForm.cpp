@@ -16,35 +16,30 @@ AForm::AForm() : _name("Empty AForm"), _signed(0), _grade_to_sign(150), _grade_t
 	std::cout << "Default AForm is created" << std::endl;
 }
 
-AForm::AForm(const std::string name, const int grade_to_sign, const int grade_to_exec)
+AForm::AForm(const std::string name, const int grade_to_sign, const int grade_to_exec) : _name(name), 
+    _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec)
 {
-    this->_name = name;
         if (grade_to_sign > 150 || grade_to_exec > 150)
             throw GradeTooLowException();
         else if (grade_to_sign < 1 || grade_to_exec < 1)
             throw GradeTooHighException();
-
-    this->_grade_to_sign = grade_to_sign;
-    this->_grade_to_exec = grade_to_exec;
     std::cout << "AForm " << this->_name << " has been created" << std::endl;
 }
 
-AForm::AForm(const AForm& copy){
-    *this = copy;
+AForm::AForm(const AForm& copy) : _name(copy._name), _signed(copy._signed),
+    _grade_to_sign(copy._grade_to_sign), _grade_to_exec(copy._grade_to_exec){
     std::cout << "Copy of the AForm " << this->_name << " has been created" << std::endl;
 }
 		
 AForm &AForm::operator = (const AForm& src){
     std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
-		this->_grade_to_sign = src.getGradeToSign();
-        this->_grade_to_exec = src.getGradeToExec();
-	
+		this->_signed = src._signed;
 	return *this;
 }
 		
 AForm::~AForm(){
-    std::cout << "AForm has been destroyed" << std::endl;
+    std::cout << this->_name << " has been destroyed" << std::endl;
 }
 
 int AForm::getGradeToSign() const{
@@ -93,7 +88,7 @@ void AForm::execute(Bureaucrat const & executor) const{
             this->performAction();
         else{
             std::cout << "The Document can't be executed, the bureaucrat's grade is too low." << std::endl;
-            throw Bureaucrat::GradeTooLowException();
+            throw GradeTooLowException();
         }
     }
     else{

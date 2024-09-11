@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:51:22 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/07/25 20:08:57 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:43:45 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,20 @@ Bureaucrat::Bureaucrat() : _name("John Doe"), _grade(1){
 	std::cout << "Default Bureaucrat is now on duty" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name){
-    this->_name = name;
-    this->_grade = 1;
+Bureaucrat::Bureaucrat(const std::string name) : _name(name), _grade(1){
     std::cout << "Bureaucrat " << this->_name << " is now on duty" << std::endl;
 
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
-{
-    this->_name = name;
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
     if (grade > 150)
         throw GradeTooLowException();
     else if (grade < 1)
         throw GradeTooHighException();
-    this->_grade = grade;
     std::cout << "Bureaucrat " << this->_name << " is now on duty" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& copy){
-    *this = copy;
+Bureaucrat::Bureaucrat(const Bureaucrat& copy) : _name(copy._name), _grade(copy._grade){
     std::cout << "Copy Bureaucrat " << this->_name << " is now on duty" << std::endl;
 }
 		

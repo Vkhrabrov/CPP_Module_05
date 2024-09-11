@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 18:47:46 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/08/13 20:43:59 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:23:52 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "PresidentialPardonForm.hpp"
 
 class RobotomyRequestForm : public AForm{
+    private:
+        std::string _target;
     public:
         RobotomyRequestForm();
         RobotomyRequestForm(const std::string target);

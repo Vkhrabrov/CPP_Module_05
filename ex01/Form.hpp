@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 20:19:36 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/09/10 20:09:15 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:50:28 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 class Form {
 private:
-    std::string _name;
+    const std::string _name;
     bool _signed;
-    int _grade_to_sign;
-    int _grade_to_exec;
+    const int _grade_to_sign;
+    const int _grade_to_exec;
 
 public:
     Form();

@@ -12,32 +12,22 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(){
-    this->_name = "Generic Robotomy Request Form"; 
-    this->_signed = 0;
-    this->_grade_to_sign = 72;
-    this->_grade_to_exec = 45;
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Generic Robotomy Request Form", 72, 45), _target("Some random poor lad"){
 	std::cout << "Default Robotomy Request Form has been created" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string target){
-    this->_name = target; 
-    this->_signed = 0;
-    this->_grade_to_sign = 72;
-    this->_grade_to_exec = 45;
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("Generic Robotomy Request Form", 72, 45), _target(target){
 	std::cout << "Target Robotomy Request Form has been created" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy){
-    this->_name = copy._name; 
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy), _target(copy._target){ 
     std::cout << "Copy of the Robotomy Request Form has been created" << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator = (const RobotomyRequestForm& src){
     std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
-		this->_grade_to_sign = src.getGradeToSign();
-        this->_grade_to_exec = src.getGradeToExec();
+		_target = src._target;
 	return *this;
 }
 

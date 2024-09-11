@@ -12,32 +12,24 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(){
-    this->_name = "Generic Presidential Pardon Form"; 
-    this->_signed = 0;
-    this->_grade_to_sign = 25;
-    this->_grade_to_exec = 5;
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon Form", 25, 5), 
+    _target("Random citizen"){
 	std::cout << "Default Presidential Pardon Form Form has been created" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target){
-    this->_name = target; 
-    this->_signed = 0;
-    this->_grade_to_sign = 25;
-    this->_grade_to_exec = 5;
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("Presidential Pardon Form", 25, 5), 
+    _target(target){
 	std::cout << "Target Presidential Pardon Form has been created" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : AForm(copy){
-    this->_name = copy._name; 
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : AForm(copy), _target(copy._target){
     std::cout << "Copy of the Presidential Pardon Form has been created" << std::endl;
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator = (const PresidentialPardonForm& src){
     std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
-		this->_grade_to_sign = src.getGradeToSign();
-        this->_grade_to_exec = src.getGradeToExec();
+		_target = src._target;
 	return *this;
 }
 
