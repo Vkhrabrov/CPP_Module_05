@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:48:14 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/09/10 20:02:38 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:34:10 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,26 @@ int main(void)
         AForm* rrf;
         AForm* ppf;
 
-        rrf = someIntern.makeForm("Robotomy Request", "Lobotomy for Kondrat");
+        rrf = someIntern.makeForm("Robotomy Request Form", "Kondrat");
         Bureaucrat bob("Bob", 4);
-        Bureaucrat sandra("Sandra", 71);
+        Bureaucrat sandra("Sandra", 4);
         Bureaucrat peter("Peter", 70);
         rrf->isSigned();
         sandra.signForm(*rrf);
+        sandra.executeForm(*rrf);
+
+        std::cout << std::endl;
     
-        ppf = someIntern.makeForm("Presidential Pardon", "Form for Alex");
+        ppf = someIntern.makeForm("Presidential Pardon Form", "Alex");
         ppf->isSigned();
         bob.signForm(*ppf);
         bob.executeForm(*ppf);
         // sandra.executeForm(*rrf);
 
+        std::cout << std::endl;
+        
         AForm* scf;
-        scf = someIntern.makeForm("Shrubbery form", "You shall not pass!");
+        scf = someIntern.makeForm("Shrubbery Creation form", "Backyard");
         delete rrf;
         delete ppf;
         delete scf;

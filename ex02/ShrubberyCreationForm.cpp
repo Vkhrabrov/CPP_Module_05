@@ -13,15 +13,15 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrubbery", 145, 137), _target("Random place in the world"){
-	std::cout << "Default Shrubbery Creation Form has been created" << std::endl;
+	std::cout << "Default Shrubbery Creation Form for " << _target << " has been created" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("Shrubbery", 145, 137), _target(target){
-	std::cout << "Target Shrubbery Creation Form has been created" << std::endl;
+	std::cout << "Shrubbery Creation Form for " << _target << " has been created" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy), _target(copy._target){
-    std::cout << "Copy of the Shrubbery Creation Form has been created" << std::endl;
+    std::cout << "Copy of the Shrubbery Creation Form for " << _target << " has been created" << std::endl;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator = (const ShrubberyCreationForm& src){
@@ -32,11 +32,11 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator = (const ShrubberyCreatio
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){
-    std::cout << "Shrubbery Creation Form has been destroyed" << std::endl;
+    std::cout << "Shrubbery Creation Form for " << _target << " has been destroyed" << std::endl;
 }
 
 void ShrubberyCreationForm::performAction() const {
-    std::string filename = _name + "_shrubbery";
+    std::string filename = _target + "_shrubbery";
     std::ofstream outfile(filename.c_str());
     
     if (!outfile.is_open()) {

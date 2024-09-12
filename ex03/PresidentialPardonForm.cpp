@@ -14,16 +14,16 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon Form", 25, 5), 
     _target("Random citizen"){
-	std::cout << "Default Presidential Pardon Form Form has been created" << std::endl;
+	std::cout << "Presidential Pardon Form for " << _target << " has been created" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("Presidential Pardon Form", 25, 5), 
     _target(target){
-	std::cout << "Target Presidential Pardon Form has been created" << std::endl;
+	std::cout << "Presidential Pardon Form for " << _target << " has been created" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : AForm(copy), _target(copy._target){
-    std::cout << "Copy of the Presidential Pardon Form has been created" << std::endl;
+    std::cout << "Copy of the Presidential Pardon Form for " << _target << " has been created" << std::endl;
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator = (const PresidentialPardonForm& src){
@@ -34,9 +34,9 @@ PresidentialPardonForm &PresidentialPardonForm::operator = (const PresidentialPa
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(){
-    std::cout << "Presidential Pardon Form has been destroyed" << std::endl;
+    std::cout << "Presidential Pardon Form for " << _target << " has been destroyed" << std::endl;
 }
 
 void PresidentialPardonForm::performAction() const {
-    std::cout << this->_name << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+    std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

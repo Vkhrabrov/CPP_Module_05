@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 21:47:01 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/09/11 19:40:54 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:27:12 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ AForm* Intern::creationSC(const std::string& target){
 }
         
 AForm* Intern::makeForm(const std::string form_name, const std::string target){
-    std::string formNameList[3] = {"Presidential Pardon", "Robotomy Request", "Shrubbery Creation"};
+    std::string formNameList[3] = {"Presidential Pardon Form", "Robotomy Request Form", "Shrubbery Creation Form"};
 
     AForm* (*functionArray[3])(const std::string&);
     functionArray[0] = &creationPP;
@@ -52,11 +52,11 @@ AForm* Intern::makeForm(const std::string form_name, const std::string target){
 
   for (int i = 0; i < 3; i++){
     if (form_name == formNameList[i]){
-      std::cout << "Intern has created " << form_name << std::endl;
+      std::cout << "Intern has created " << form_name << " for " << target << std::endl;
       return functionArray[i](target);
     }
   }
   std::cout << "Intern couldn't create " << form_name << ". Check the spelling of your Form Request!" << std::endl;
-  std::cout << "Must be Shrubbery Creation/Presidential Pardon/Robotomy Request" << std::endl;
+  std::cout << "Must be Shrubbery Creation Form/Presidential Pardon Form/Robotomy Request Form" << std::endl;
   throw std::runtime_error("Couldn't create " + form_name + " Form");
 }

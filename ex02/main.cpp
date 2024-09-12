@@ -6,7 +6,7 @@
 /*   By: vkhrabro <vkhrabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:48:14 by vkhrabro          #+#    #+#             */
-/*   Updated: 2024/09/10 20:10:09 by vkhrabro         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:37:21 by vkhrabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main(void)
     try {
         Bureaucrat bob("Bob", 4);
         RobotomyRequestForm johnny("John Doe");
+        ShrubberyCreationForm house("home");
+        PresidentialPardonForm peter("Peter");
         johnny.isSigned();
         bob.signForm(johnny);
         johnny.isSigned();

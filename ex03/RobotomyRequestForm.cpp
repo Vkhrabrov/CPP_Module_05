@@ -13,15 +13,15 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Generic Robotomy Request Form", 72, 45), _target("Some random poor lad"){
-	std::cout << "Default Robotomy Request Form has been created" << std::endl;
+	std::cout << "Default Robotomy Request Form for " << _target << " has been created" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("Generic Robotomy Request Form", 72, 45), _target(target){
-	std::cout << "Target Robotomy Request Form has been created" << std::endl;
+	std::cout << "Robotomy Request Form for " << _target << " has been created" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy), _target(copy._target){ 
-    std::cout << "Copy of the Robotomy Request Form has been created" << std::endl;
+    std::cout << "Copy of the Robotomy Request Form for " << _target << " has been created" << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator = (const RobotomyRequestForm& src){
@@ -32,7 +32,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator = (const RobotomyRequestForm&
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(){
-    std::cout << "Robotomy Request Form has been destroyed" << std::endl;
+    std::cout << "Robotomy Request Form for " << _target << " has been destroyed" << std::endl;
 }
 
 void RobotomyRequestForm::performAction() const {
@@ -41,8 +41,8 @@ void RobotomyRequestForm::performAction() const {
     
     // 50% chance of success
     if (std::rand() % 2 == 0) {
-        std::cout << _name << " has been robotomized successfully!" << std::endl;
+        std::cout << _target << " has been robotomized successfully!" << std::endl;
     } else {
-        std::cout << "Robotomy failed. " << _name << " remains unrobotomized." << std::endl;
+        std::cout << "Robotomy failed. " << _target << " remains unrobotomized." << std::endl;
     }
 }
