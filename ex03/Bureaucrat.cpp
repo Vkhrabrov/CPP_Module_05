@@ -14,7 +14,8 @@
 
 Bureaucrat::Bureaucrat() : _name("John Doe"), _grade(1){
 	std::cout << "Default Bureaucrat is now on duty" << std::endl;
-}
+} 
+
 
 Bureaucrat::Bureaucrat(std::string name){
     this->_name = name;
